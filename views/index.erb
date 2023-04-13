@@ -1,4 +1,26 @@
 <div id="app">
+    <div class="alert alert-primary">Let's play with <a href="https://en.wikipedia.org/wiki/Combining_character">Unicode combining character</a>!</div>
+
+    <form method="POST" action="/">
+        <div class="input-group">
+            <input type="text" name="message" class="form-control" :placeholder="placeholder" @input="decorated_message = decorate($event.target.value, 1, 8)" required autocomplete="off"/>
+            <input type="submit" class="btn btn-primary" value="Send" />
+        </div>
+        <input type="hidden" name="decorated_message" :value="decorated_message" />
+        <input type="hidden" name="name" :value="name"/>
+    </form>
+
+    <hr />
+
+    <table class="table">
+        <tbody>
+            <tr v-for="c in chats">
+                <td>{{ c.name }}</td>
+                <td>{{ c.decorated_message }}</td>
+                <td><time datetime="{{ c.created_at }}">{{ new Date(c.created_at * 1000).toLocaleString() }}</time></td>
+            </tr>
+        </tbody>
+    </table>
 </div>
 
 <script src="/js/index.js"></script>

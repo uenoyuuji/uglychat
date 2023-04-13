@@ -1,0 +1,21 @@
+readonly:
+  adapter: mysql2
+  database: uglychat_development
+  host: mysql
+  port: 3306
+  username: root
+  password: HskXyct6
+  encoding: utf8mb4
+  pool: 2
+  aurora_max_retry: 5
+  replica: true
+writable:
+  adapter: mysql2
+  database: uglychat_development
+  host: mysql
+  port: 3306
+  username: root
+  password: HskXyct6
+  encoding: utf8mb4
+  pool: 2
+  aurora_max_retry: 5

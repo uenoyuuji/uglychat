@@ -1,0 +1,9 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+create_table("chats", **SCHEMAFILE_DEFAULT_TABLE_PARAMETER) do |t|
+  t.string "name", null: false
+  t.text "message", null: false
+  t.text "decorated_message", null: false
+  t.integer "created_at", null: false
+  t.index ["created_at"], name: "idx_chats_on_created_at"
+end

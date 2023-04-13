@@ -1,14 +1,39 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (7.0.4.3)
+      activesupport (= 7.0.4.3)
+    activerecord (7.0.4.3)
+      activemodel (= 7.0.4.3)
+      activesupport (= 7.0.4.3)
+    activerecord-mysql-reconnect (0.5.0)
+      activerecord
+      mysql2
+    activesupport (7.0.4.3)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      tzinfo (~> 2.0)
+    concurrent-ruby (1.2.2)
+    diffy (3.4.2)
+    i18n (1.12.0)
+      concurrent-ruby (~> 1.0)
+    minitest (5.18.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
+    mysql2 (0.5.5)
+    mysql2-aurora (0.5.2.1)
+      mysql2 (~> 0.5.2)
     nio4r (2.5.9)
     puma (6.2.1)
       nio4r (~> 2.0)
     rack (2.2.6.4)
     rack-protection (3.0.5)
       rack
+    rake (13.0.6)
+    ridgepole (1.2.0)
+      activerecord (>= 5.1, < 7.1)
+      diffy
     ruby2_keywords (0.0.5)
     sinatra (3.0.5)
       mustermann (~> 3.0)
@@ -16,13 +41,20 @@ GEM
       rack-protection (= 3.0.5)
       tilt (~> 2.0)
     tilt (2.1.0)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
 
 PLATFORMS
   aarch64-linux
   arm64-darwin-22
 
 DEPENDENCIES
+  activerecord
+  activerecord-mysql-reconnect
+  mysql2-aurora
   puma
+  rake
+  ridgepole
   sinatra
 
 BUNDLED WITH

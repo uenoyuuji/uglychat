@@ -4,6 +4,7 @@ WORKDIR /app
 
 COPY Gemfile ./
 COPY Gemfile.lock ./
+COPY environment ./
 
 RUN apt update && apt install -y \
     build-essential \

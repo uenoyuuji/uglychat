@@ -1,0 +1,13 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+SCHEMAFILE_DEFAULT_TABLE_PARAMETER = {
+  force: :cascade,
+  charset: 'utf8mb4',
+  collation: 'utf8mb4_0900_ai_ci',
+  options: 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC'
+}
+
+Dir.glob(File.join(File.expand_path(__dir__), '*.schema')).sort.each do |schema|
+  require schema
+end
