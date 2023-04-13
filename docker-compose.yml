@@ -1,0 +1,11 @@
+version: '3'
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+      - /app/vendor/bundle
+    ports:
+      - 127.0.0.1:9292:9292
+    environment:
+      - SESSION_SECRET=1f4318d9a2eaea28a0f0195ec0b7a304e2388375b95be995467ae05b0cc2c93c
