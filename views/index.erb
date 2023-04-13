@@ -17,7 +17,7 @@
             <tr v-for="c in chats">
                 <td>{{ c.name }}</td>
                 <td>{{ c.decorated_message }}</td>
-                <td><time datetime="{{ c.created_at }}">{{ new Date(c.created_at * 1000).toLocaleString() }}</time></td>
+                <td><time :datetime="new Date(c.created_at * 1000).toLocaleString()">{{ new Date(c.created_at * 1000).toLocaleString() }}</time></td>
             </tr>
         </tbody>
     </table>

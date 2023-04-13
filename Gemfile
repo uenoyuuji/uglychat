@@ -9,3 +9,7 @@ gem 'puma'
 gem 'rake'
 gem 'ridgepole'
 gem 'sinatra'
+
+group :test, :development do
+  gem 'rubocop', '~> 1.50', require: false
+end
