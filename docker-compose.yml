@@ -23,3 +23,5 @@ services:
       - ./docker/mysql/data:/var/lib/mysql
       - ./docker/mysql/conf:/etc/mysql/conf.d
       - ./docker/mysql/init:/docker-entrypoint-initdb.d
+  redis:
+    image: redis:7.0

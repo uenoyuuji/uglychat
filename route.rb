@@ -14,10 +14,12 @@ ActiveRecord::Base.retry_mode = :rw
 ActiveRecord::Base.execution_retry_wait = 1.5
 
 ['./lib', './model'].each do |d|
-  Dir.glob(File.join(__dir__, d, '*.rb')).each do |f|
+  Dir.glob(File.join(__dir__, d, '**', '*.rb')).each do |f|
     require f
   end
 end
+
+RedisBase::CachedRedisConnection.instance.environment = YAML.load_file('environment/development/redis.yml')
 
 class App < Sinatra::Base
   enable :sessions
