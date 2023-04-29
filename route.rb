@@ -28,18 +28,26 @@ class App < Sinatra::Base
 
   get '/' do
     session[:name] = SecureRandom.alphanumeric(10) unless session[:name]
-    chats = Chat.order(id: :desc).limit(20)
+
+    chats = CachedChat.new.load
+    if chats.empty?
+      chats = Chat.order(id: :desc).limit(CachedChat::MAX_LENGTH)
+      CachedChat.new.dump(chats)
+    end
 
     erb :index, locals: { name: session[:name], chats: chats }
   end
 
   post '/' do
-    Chat.create(
+    parameter = {
       name: params[:name],
       message: params[:message],
       decorated_message: params[:decorated_message],
       created_at: Time.now.to_i
-    )
+    }
+
+    Chat.create(**parameter)
+    CachedChat.new.push(parameter)
 
     redirect '/'
   end
