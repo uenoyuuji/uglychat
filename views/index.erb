@@ -3,8 +3,8 @@
 
     <form method="POST" action="/">
         <div class="input-group">
-            <input type="text" name="message" class="form-control" :placeholder="placeholder" @input="decorated_message = decorate($event.target.value, 1, 8)" required autocomplete="off"/>
-            <input type="submit" class="btn btn-primary" value="Send" />
+            <input type="text" name="message" class="form-control" :placeholder="placeholder" @input="decorated_message = decorate($event.target.value, 1, 8)" required autocomplete="off" data-bs-toggle="tooltip" data-bs-placement="top" :title="decorated_message"/>
+            <input type="submit" class="btn btn-primary" value="Send"/>
         </div>
         <input type="hidden" name="decorated_message" :value="decorated_message" />
         <input type="hidden" name="name" :value="name"/>
@@ -24,3 +24,21 @@
 </div>
 
 <script src="/js/index.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    let input = document.querySelector('[data-bs-toggle="tooltip"]');
+    let t;
+    input.addEventListener('keyup', () => {
+        if(t) {
+            t.dispose();
+        }
+
+        t = new bootstrap.Tooltip(input);
+
+        if(input.value.length > 0) {
+            t.show();
+        }
+    });
+});
+</script>
